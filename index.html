@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Product Inventory Manager - MCA Advanced Web Technologies (24MCA301) Part B Assignment" />
+  <title>Product Inventory Manager | 24MCA301</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= PAGE HEADER ================= -->
+  <header class="page-header">
+    <h1 class="page-title">Product Inventory Manager</h1>
+    <p class="page-subtitle">
+      Third Semester MCA &middot; Advanced Web Technologies (24MCA301) &middot; Part B
+    </p>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="container">
+
+    <!-- ---------- ADD PRODUCT FORM SECTION ---------- -->
+    <section class="card" id="form-section">
+      <h2 class="section-title">Add New Product</h2>
+
+      <form id="product-form" class="product-form" novalidate>
+
+        <!-- Product ID -->
+        <div class="form-group">
+          <label for="input-product-id">Product ID</label>
+          <input
+            type="text"
+            id="input-product-id"
+            name="productId"
+            placeholder="e.g. 101"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Product Name -->
+        <div class="form-group">
+          <label for="input-product-name">Product Name</label>
+          <input
+            type="text"
+            id="input-product-name"
+            name="productName"
+            placeholder="e.g. Wireless Mouse"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+          <label for="input-product-price">Price (₹)</label>
+          <input
+            type="number"
+            id="input-product-price"
+            name="productPrice"
+            placeholder="e.g. 799.00"
+            min="0"
+            step="0.01"
+          />
+        </div>
+
+        <!-- Tags (comma separated, string[] in TypeScript) -->
+        <div class="form-group">
+          <label for="input-product-tags">Tags (comma separated)</label>
+          <input
+            type="text"
+            id="input-product-tags"
+            name="productTags"
+            placeholder="e.g. electronics, accessories"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- In Stock checkbox (boolean in TypeScript) -->
+        <div class="form-group form-group-checkbox">
+          <input
+            type="checkbox"
+            id="input-product-instock"
+            name="productInStock"
+            checked
+          />
+          <label for="input-product-instock">In Stock</label>
+        </div>
+
+        <!-- Submit button -->
+        <div class="form-actions">
+          <button type="submit" id="btn-add-product" class="btn btn-primary">
+            Add Product
+          </button>
+          <button type="reset" id="btn-reset-form" class="btn btn-secondary">
+            Reset
+          </button>
+        </div>
+      </form>
+
+      <!-- Validation / error message area -->
+      <div id="message-area" class="message-area" role="alert" aria-live="polite"></div>
+    </section>
+
+    <!-- ---------- INVENTORY CONTROLS SECTION ---------- -->
+    <section class="card" id="controls-section">
+      <h2 class="section-title">Inventory Controls</h2>
+
+      <div class="controls-bar">
+        <button type="button" id="btn-show-all" class="btn btn-secondary">
+          Show All Products
+        </button>
+
+        <button type="button" id="btn-show-available" class="btn btn-secondary">
+          Show Available Products
+        </button>
+
+        <button type="button" id="btn-apply-discount" class="btn btn-accent">
+          Apply 10% Discount
+        </button>
+      </div>
+
+      <!-- Total product count display -->
+      <div class="total-display">
+        <span class="total-label">Total Products:</span>
+        <span id="total-products" class="total-value">0</span>
+      </div>
+    </section>
+
+    <!-- ---------- PRODUCT TABLE SECTION ---------- -->
+    <section class="card" id="table-section">
+      <h2 class="section-title">Product List</h2>
+
+      <div class="table-wrapper">
+        <table id="product-table" class="product-table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Stock Status</th>
+              <th scope="col">Tags</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+
+          <!-- Rows are generated dynamically by TypeScript (dist/app.js) -->
+          <tbody id="product-table-body">
+            <!-- No static product data is placed here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty-state message shown when no products are available -->
+      <p id="empty-message" class="empty-message" hidden>
+        No products to display. Add a product using the form above.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ================= PAGE FOOTER ================= -->
+  <footer class="page-footer">
+    <p>&copy; MCA Advanced Web Technologies (24MCA301) &mdash; Product Inventory Manager</p>
+  </footer>
+
+  <!-- Compiled TypeScript output -->
+  <script src="dist/app.js" defer></script>
+</body>
+</html>
